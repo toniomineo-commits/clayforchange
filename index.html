@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clay for Change — Antonio &amp; Josef</title>
+  <meta name="description" content="Handmade ceramic vases by Anto for our wedding — each one supports a cause we love." />
+
+  <!-- Fonts (Google Fonts, aliased to the original family names used by the page) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Favicon (inline emoji as fallback) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%BA%3C/text%3E%3C/svg%3E" />
+
+  <style>
+    /* Map Google's family names to the names the page CSS uses */
+    body, html { font-family: 'Josefin Sans', system-ui, sans-serif; }
+
+    /* Reset/baseline */
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #f5ede4; }
+    body { min-height: 100vh; }
+
+    /* ─── Clay for Change — page-scoped styles ─── */
+    :root {
+      --clay-bg:       #f5ede4;
+      --clay-surface:  #fdf7f1;
+      --clay-border:   #dfd0c0;
+      --clay-ink:      #2c1f14;
+      --clay-muted:    #8a7060;
+      --clay-accent:   #8b4a2c;
+      --clay-gold:     #b07d40;
+      --clay-heart:    #a83250;
+      --clay-green:    #4a7c59;
+      --clay-radius:   16px;
+      --clay-radius-sm: 10px;
+    }
+
+    #clay-app {
+      font-family: 'Josefin Sans', system-ui, sans-serif;
+      color: var(--clay-ink);
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 0 80px;
+    }
+
+    /* Typography */
+    .clay-serif {
+      font-family: 'Yeseva One', Georgia, serif;
+    }
+
+    /* ── Hero ── */
+    .clay-hero {
+      text-align: center;
+      padding: 2.5rem 1.5rem 2rem;
+    }
+    .clay-hero__eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--clay-muted);
+      margin-bottom: 1rem;
+    }
+    .clay-hero__title {
+      font-family: 'Yeseva One', Georgia, serif;
+      font-size: 2.6rem;
+      line-height: 1.15;
+      color: var(--clay-accent);
+      margin-bottom: 1.25rem;
+    }
+    .clay-hero__divider {
+      width: 48px;
+      height: 2px;
+      background: var(--clay-gold);
+      margin: 0 auto 1.5rem;
+      border-radius: 2px;
+    }
+    .clay-hero__intro {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--clay-ink);
+      max-width: 480px;
+      margin: 0 auto 1rem;
+    }
+    .clay-hero__note {
+      font-size: 0.85rem;
+      color: var(--clay-muted);
+      font-style: italic;
+      margin: 0;
+    }
+
+    /* ── Section headers ── */
+    .clay-step {
+      padding: 0 1.25rem 2rem;
+    }
+    .clay-step__header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .clay-step__num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--clay-accent);
+      color: #fff;
+      font-family: 'Yeseva One', Georgia, serif;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .clay-step__title {
+      font-family: 'Yeseva One', Georgia, serif;
+      font-size: 1.3rem;
+      color: var(--clay-ink);
+      margin: 0;
+    }
+
+    /* ── Vase grid ── */
+    .clay-vase-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+    }
+    .clay-vase-card {
+      background: var(--clay-surface);
+      border: 2px solid var(--clay-border);
+      border-radius: var(--clay-radius);
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+      overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .clay-vase-card:active { transform: scale(0.97); }
+    .clay-vase-card.selected {
+      border-color: var(--clay-accent);
+      box-shadow: 0 0 0 3px rgba(139,74,44,0.15);
+    }
+    .clay-vase-card.unavailable {
+      opacity: 0.45;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    .clay-vase-card__img-wrap {
+      aspect-ratio: 3/4;
+      background: var(--clay-bg);
+      overflow: hidden;
+    }
+    .clay-vase-card__img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .clay-vase-card__body {
+      padding: 0.6rem 0.75rem 0.75rem;
+    }
+    .clay-vase-card__name {
+      font-family: 'Yeseva One', Georgia, serif;
+      font-size: 0.95rem;
+      color: var(--clay-ink);
+      margin: 0 0 0.2rem;
+    }
+    .clay-vase-card__status {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .clay-vase-card__status.available  { color: var(--clay-green); }
+    .clay-vase-card__status.taken      { color: var(--clay-muted); }
+
+    /* Placeholder vase illustration */
+    .clay-vase-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(160deg, #e8d6c6 0%, #d4b8a0 100%);
+    }
+    .clay-vase-placeholder svg {
+      width: 55%;
+      height: auto;
+      opacity: 0.55;
+    }
+
+    /* ── Charity cards ── */
+    .clay-charity-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .clay-charity-card {
+      background: var(--clay-surface);
+      border: 2px solid var(--clay-border);
+      border-radius: var(--clay-radius);
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .clay-charity-card.selected {
+      border-color: var(--clay-accent);
+      box-shadow: 0 0 0 3px rgba(139,74,44,0.15);
+    }
+    .clay-charity-card__name {
+      font-family: 'Yeseva One', Georgia, serif;
+      font-size: 1rem;
+      color: var(--clay-ink);
+      margin: 0 0 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .clay-charity-heart-tag {
+      font-family: 'Josefin Sans', system-ui, sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--clay-heart);
+      background: rgba(168,50,80,0.1);
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+    .clay-charity-card__desc {
+      font-size: 0.85rem;
+      color: var(--clay-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── Donation amounts ── */
+    .clay-amounts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.7rem;
+      margin-bottom: 0.85rem;
+    }
+    .clay-amount-btn {
+      background: var(--clay-surface);
+      border: 2px solid var(--clay-border);
+      border-radius: var(--clay-radius-sm);
+      padding: 0.85rem 0.5rem;
+      cursor: pointer;
+      text-align: center;
+      transition: border-color 0.2s, background 0.2s;
+      font-family: 'Josefin Sans', system-ui, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .clay-amount-btn:active { transform: scale(0.97); }
+    .clay-amount-btn.selected {
+      border-color: var(--clay-accent);
+      background: #f8ede5;
+    }
+    .clay-amount-btn__eur {
+      font-family: 'Yeseva One', Georgia, serif;
+      font-size: 1.35rem;
+      color: var(--clay-accent);
+      display: block;
+    }
+    .clay-amount-btn__czk {
+      font-size: 0.72rem;
+      color: var(--clay-muted);
+      display: block;
+      margin-top: 2px;
+    }
+    .clay-amount-custom {
+      border: 2px solid var(--clay-border);
+      border-radius: var(--clay-radius-sm);
+      background: var(--clay-surface);
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-family: 'Yeseva One', Georgia, serif;
+      font-size: 1.1rem;
+      color: var(--clay-ink);
+      outline: none;
+      transition: border-color 0.2s;
+      display: none;
+    }
+    .clay-amount-custom:focus { border-color: var(--clay-accent); }
+    .clay-amount-custom.visible { display: block; }
+
+    /* ── Form fields ── */
+    .clay-field {
+      margin-bottom: 1rem;
+    }
+    .clay-field label {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--clay-muted);
+      margin-bottom: 0.4rem;
+    }
+    .clay-field input,
+    .clay-field textarea {
+      width: 100%;
+      border: 2px solid var(--clay-border);
+      border-radius: var(--clay-radius-sm);
+      background: var(--clay-surface);
+      padding: 0.85rem 1rem;
+      font-family: 'Josefin Sans', system-ui, sans-serif;
+      font-size: 1rem;
+      color: var(--clay-ink);
+      outline: none;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+    .clay-field input:focus,
+    .clay-field textarea:focus { border-color: var(--clay-accent); }
+    .clay-field textarea { resize: vertical; min-height: 80px; }
+
+    /* ── Summary card ── */
+    .clay-summary {
+      background: var(--clay-surface);
+      border: 1px solid var(--clay-border);
+      border-radius: var(--clay-radius);
+      padding: 1.1rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .clay-summary__row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.875rem;
+      padding: 0.35rem 0;
+      border-bottom: 1px solid var(--clay-border);
+    }
+    .clay-summary__row:last-child { border-bottom: none; }
+    .clay-summary__label { color: var(--clay-muted); }
+    .clay-summary__value { font-weight: 600; text-align: right; max-width: 60%; }
+
+    /* ── CTA button ── */
+    .clay-btn-primary {
+      width: 100%;
+      background: var(--clay-accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--clay-radius-sm);
+      padding: 1.1rem;
+      font-family: 'Yeseva One', Georgia, serif;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .clay-btn-primary:active { transform: scale(0.98); }
+    .clay-btn-primary:hover  { background: #7a3d24; }
+    .clay-btn-primary:disabled {
+      background: var(--clay-border);
+      color: var(--clay-muted);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ── Alert / error ── */
+    .clay-alert {
+      background: #fdf0e8;
+      border: 1px solid #e8b89a;
+      border-radius: var(--clay-radius-sm);
+      padding: 0.85rem 1rem;
+      font-size: 0.875rem;
+      color: #7a3d1a;
+      margin-bottom: 1rem;
+      display: none;
+    }
+    .clay-alert.visible { display: block; }
+
+    /* ── Loading spinner ── */
+    .clay-loading {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--clay-muted);
+      font-size: 0.9rem;
+    }
+    .clay-spinner {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      border: 3px solid var(--clay-border);
+      border-top-color: var(--clay-accent);
+      border-radius: 50%;
+      animation: clay-spin 0.8s linear infinite;
+      margin-bottom: 0.75rem;
+    }
+    @keyframes clay-spin { to { transform: rotate(360deg); } }
+
+    /* ── Confirmation screen ── */
+    #clay-confirmation {
+      display: none;
+      text-align: center;
+      padding: 3rem 1.5rem;
+    }
+    #clay-confirmation .clay-confirm__heart {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    #clay-confirmation .clay-confirm__title {
+      font-family: 'Yeseva One', Georgia, serif;
+      font-size: 2rem;
+      color: var(--clay-accent);
+      margin-bottom: 0.75rem;
+    }
+    #clay-confirmation .clay-confirm__body {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--clay-ink);
+      margin-bottom: 1.5rem;
+    }
+    #clay-confirmation .clay-confirm__helper {
+      font-size: 0.85rem;
+      color: var(--clay-muted);
+      font-style: italic;
+      background: var(--clay-surface);
+      border: 1px solid var(--clay-border);
+      border-radius: var(--clay-radius-sm);
+      padding: 0.85rem 1rem;
+    }
+
+    /* Divider */
+    .clay-divider {
+      height: 1px;
+      background: var(--clay-border);
+      margin: 1.5rem 1.25rem;
+    }
+
+    /* Scroll-reveal helper */
+    .clay-step { animation: clay-fadein 0.4s ease both; }
+    @keyframes clay-fadein {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scroll padding so smooth-scroll anchors don't land flush at top */
+    html { scroll-padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<div id="clay-app">
+
+  <!-- ── Hero ── -->
+  <header class="clay-hero">
+    <p class="clay-hero__eyebrow">Antonio &amp; Josef</p>
+    <h1 class="clay-hero__title">Clay for Change</h1>
+    <div class="clay-hero__divider"></div>
+    <p class="clay-hero__intro">
+      The vases on the table were handmade by Anto for our wedding, with one simple purpose:
+      turning a small object of love into support for causes we deeply care about.
+    </p>
+    <p class="clay-hero__intro">
+      Choose a vase, select a charity, make a donation, and we'll make sure your vase
+      finds its way home with you in the morning.
+    </p>
+    <p class="clay-hero__note">
+      Each vase is worth at least €25 — we suggest a minimum donation of €20.
+    </p>
+  </header>
+
+  <!-- ── Main form ── -->
+  <div id="clay-form-wrap">
+
+    <!-- Loading state -->
+    <div id="clay-loading" class="clay-loading">
+      <div class="clay-spinner"></div><br>Loading vases…
+    </div>
+
+    <!-- Form content (shown after vases load) -->
+    <div id="clay-form-content" style="display:none">
+
+      <!-- Step 1: Choose vase -->
+      <div class="clay-step" id="clay-section-vases">
+        <div class="clay-step__header">
+          <div class="clay-step__num">1</div>
+          <h2 class="clay-step__title">Choose your vase</h2>
+        </div>
+        <div id="clay-vase-grid" class="clay-vase-grid"></div>
+        <div id="clay-all-gone" style="display:none; text-align:center; padding:1.5rem 0; color:var(--clay-muted); font-style:italic;">
+          All vases have been claimed — thank you for the love! 🤍
+        </div>
+      </div>
+
+      <div class="clay-divider"></div>
+
+      <!-- Step 2: Choose charity -->
+      <div class="clay-step" id="clay-section-charity">
+        <div class="clay-step__header">
+          <div class="clay-step__num">2</div>
+          <h2 class="clay-step__title">Choose a charity</h2>
+        </div>
+        <div class="clay-charity-list" id="clay-charity-list">
+
+          <!-- Ronald McDonald — heart card -->
+          <div class="clay-charity-card"
+               data-charity="Ronald McDonald House Charities Czech Republic"
+               data-project-id="1210088"
+               onclick="selectCharity(this)">
+            <p class="clay-charity-card__name">
+              Ronald McDonald House Charities
+              <span class="clay-charity-heart-tag">Close to our hearts</span>
+            </p>
+            <p class="clay-charity-card__desc">
+              Ronald McDonald House Charities has been an incredibly important part of Anto's life
+              and family. During Alessandro's medical care in France and the United States, the
+              foundation helped support the family through some of the hardest moments of their lives.
+              Being able to stay close to loved ones during treatment changes everything.
+            </p>
+          </div>
+
+          <!-- Cibulka Centre -->
+          <div class="clay-charity-card"
+               data-charity="Cibulka Centre"
+               data-project-id="1207495"
+               onclick="selectCharity(this)">
+            <p class="clay-charity-card__name">Cibulka Centre</p>
+            <p class="clay-charity-card__desc">
+              A future care centre in Prague for seriously ill children and their families,
+              offering respite care, short-term stays, and end-of-life support.
+            </p>
+          </div>
+
+          <!-- SOS Gaza (People in Need) -->
+          <div class="clay-charity-card"
+               data-charity="SOS Gaza"
+               data-project-id="1206964"
+               onclick="selectCharity(this)">
+            <p class="clay-charity-card__name">SOS Gaza</p>
+            <p class="clay-charity-card__desc">
+              Emergency humanitarian aid for civilians in Gaza — food, drinking water, medical care,
+              and shelter for families enduring the ongoing crisis. Run by People in Need.
+            </p>
+          </div>
+
+          <!-- Psychological Help for Ukrainian Children -->
+          <div class="clay-charity-card"
+               data-charity="Psychological Help for Ukrainian Children"
+               data-project-id="1208551"
+               onclick="selectCharity(this)">
+            <p class="clay-charity-card__name">Psychological Help for Ukrainian Children</p>
+            <p class="clay-charity-card__desc">
+              Support for psychological care for Ukrainian children affected by war, including
+              children living in the Czech Republic and those returning after illegal detention.
+            </p>
+          </div>
+
+          <!-- Pride Community Center -->
+          <div class="clay-charity-card"
+               data-charity="Pride Community Center"
+               data-project-id="1207562"
+               onclick="selectCharity(this)">
+            <p class="clay-charity-card__name">Pride Community Center</p>
+            <p class="clay-charity-card__desc">
+              A safe space in Prague offering counselling, community programmes, and everyday
+              support for LGBT+ people, their families and friends — a place to belong.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="clay-divider"></div>
+
+      <!-- Step 3: Donation amount -->
+      <div class="clay-step" id="clay-section-amount">
+        <div class="clay-step__header">
+          <div class="clay-step__num">3</div>
+          <h2 class="clay-step__title">Donation amount</h2>
+        </div>
+        <div class="clay-amounts">
+          <button class="clay-amount-btn" data-eur="20" data-czk="~500 CZK" onclick="selectAmount(this)">
+            <span class="clay-amount-btn__eur">€20</span>
+            <span class="clay-amount-btn__czk">~500 CZK</span>
+          </button>
+          <button class="clay-amount-btn" data-eur="30" data-czk="~750 CZK" onclick="selectAmount(this)">
+            <span class="clay-amount-btn__eur">€30</span>
+            <span class="clay-amount-btn__czk">~750 CZK</span>
+          </button>
+          <button class="clay-amount-btn" data-eur="50" data-czk="~1,250 CZK" onclick="selectAmount(this)">
+            <span class="clay-amount-btn__eur">€50</span>
+            <span class="clay-amount-btn__czk">~1,250 CZK</span>
+          </button>
+          <button class="clay-amount-btn" data-eur="custom" onclick="selectAmount(this)">
+            <span class="clay-amount-btn__eur" style="font-size:1rem;">Custom</span>
+            <span class="clay-amount-btn__czk">your choice</span>
+          </button>
+        </div>
+        <input id="clay-custom-amount" class="clay-amount-custom"
+               type="number" min="1" placeholder="Enter amount in €" />
+      </div>
+
+      <div class="clay-divider"></div>
+
+      <!-- Step 4: Your details -->
+      <div class="clay-step" id="clay-section-details">
+        <div class="clay-step__header">
+          <div class="clay-step__num">4</div>
+          <h2 class="clay-step__title">Your details</h2>
+        </div>
+        <div class="clay-field">
+          <label for="clay-name">Your name *</label>
+          <input type="text" id="clay-name" placeholder="How shall we label the vase?">
+        </div>
+        <div class="clay-field">
+          <label for="clay-note">A note for us (optional)</label>
+          <textarea id="clay-note" placeholder="A message, a wish, anything you'd like…"></textarea>
+        </div>
+      </div>
+
+      <div class="clay-divider"></div>
+
+      <!-- Step 5: Confirm & submit -->
+      <div class="clay-step" id="clay-submit-step">
+        <div class="clay-step__header">
+          <div class="clay-step__num">5</div>
+          <h2 class="clay-step__title">Reserve &amp; donate</h2>
+        </div>
+
+        <!-- Summary -->
+        <div class="clay-summary" id="clay-summary" style="display:none">
+          <div class="clay-summary__row">
+            <span class="clay-summary__label">Vase</span>
+            <span class="clay-summary__value" id="sum-vase">—</span>
+          </div>
+          <div class="clay-summary__row">
+            <span class="clay-summary__label">Charity</span>
+            <span class="clay-summary__value" id="sum-charity">—</span>
+          </div>
+          <div class="clay-summary__row">
+            <span class="clay-summary__label">Amount</span>
+            <span class="clay-summary__value" id="sum-amount">—</span>
+          </div>
+          <div class="clay-summary__row">
+            <span class="clay-summary__label">Name</span>
+            <span class="clay-summary__value" id="sum-name">—</span>
+          </div>
+        </div>
+
+        <div id="clay-error" class="clay-alert"></div>
+
+        <button id="clay-submit-btn" class="clay-btn-primary" onclick="submitReservation()">
+          Reserve vase &amp; donate →
+        </button>
+        <p style="font-size:0.78rem; color:var(--clay-muted); text-align:center; margin-top:0.75rem; line-height:1.6;">
+          Clicking this button will reserve your vase and open the charity's donation page in a new tab.
+        </p>
+      </div>
+
+    </div><!-- /clay-form-content -->
+  </div><!-- /clay-form-wrap -->
+
+  <!-- ── Confirmation ── -->
+  <div id="clay-confirmation">
+    <div class="clay-confirm__heart">🤍</div>
+    <h2 class="clay-confirm__title">Thank you</h2>
+    <p class="clay-confirm__body">
+      Your vase is reserved! We'll make sure<br>it finds you at breakfast — or the next<br>time we meet in Prague. 🤍
+    </p>
+  </div>
+
+</div><!-- /clay-app -->
+
+<script>
+(function () {
+  // ─── Config (Supabase + EmailJS — same shared backend as the wedding site) ───
+  const SUPABASE_URL      = 'https://moptegvrlzemfurcciaa.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1vcHRlZ3ZybHplbWZ1cmNjaWFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzNDkzOTYsImV4cCI6MjA5MzkyNTM5Nn0.7sPnmdrvZ2CZUmF1dRHUq1BXvCahq0KRn-Up7_z9jOc';
+
+  const EMAILJS_PUBLIC_KEY  = '-lUyo3xHRYR3j3bCa';
+  const EMAILJS_SERVICE_ID  = 'service_0hq8apf';
+  const EMAILJS_TEMPLATE_ID = 'template_qftkksj';
+  // Expose key so the EmailJS defer onload can init as soon as the script lands
+  window.__EJS_KEY__ = EMAILJS_PUBLIC_KEY;
+
+  // ─── Vase data (placeholders for now; real photos later) ───
+  const VASES = [
+    { id: 'vase-01', name: 'Vase 01' },
+    { id: 'vase-02', name: 'Vase 02' },
+    { id: 'vase-03', name: 'Vase 03' },
+    { id: 'vase-04', name: 'Vase 04' },
+    { id: 'vase-05', name: 'Vase 05' },
+    { id: 'vase-06', name: 'Vase 06' },
+    { id: 'vase-07', name: 'Vase 07' },
+    { id: 'vase-08', name: 'Vase 08' },
+    { id: 'vase-09', name: 'Vase 09' },
+    { id: 'vase-10', name: 'Vase 10' },
+  ];
+
+  // ─── State ───
+  let selectedVaseId = null;
+  let selectedCharityName = null;
+  let selectedCharityProjectId = null;
+  let selectedAmountEur = null;
+  let reservedVaseIds = new Set();
+
+  // ─── Supabase REST helpers (no SDK) ───
+  var SB_HEADERS = {
+    'apikey': SUPABASE_ANON_KEY,
+    'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+    'Content-Type': 'application/json'
+  };
+
+  function sbFetch(path, options) {
+    return fetch(SUPABASE_URL + path, Object.assign({ headers: SB_HEADERS }, options || {}));
+  }
+
+  async function fetchReservedVaseIds() {
+    var resp = await sbFetch('/rest/v1/vase_reservations?select=vase_id');
+    if (!resp.ok) throw new Error('Supabase read failed: ' + resp.status);
+    var data = await resp.json();
+    return new Set(data.map(function(r) { return r.vase_id; }));
+  }
+
+  async function rpcReserveVase(params) {
+    var resp = await sbFetch('/rest/v1/rpc/reserve_vase', {
+      method: 'POST',
+      body: JSON.stringify(params)
+    });
+    if (!resp.ok) {
+      var errText = await resp.text();
+      throw new Error('Reserve failed (' + resp.status + '): ' + errText);
+    }
+    return await resp.json();
+  }
+
+  // ─── Init ───
+  async function init() {
+    try {
+      reservedVaseIds = await fetchReservedVaseIds();
+    } catch (e) {
+      console.warn('Could not load vase availability:', e.message);
+      reservedVaseIds = new Set();
+    }
+
+    renderVases(reservedVaseIds);
+    document.getElementById('clay-loading').style.display = 'none';
+    document.getElementById('clay-form-content').style.display = 'block';
+  }
+
+  // ─── Render vase grid ───
+  function vasePlaceholderSVG() {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 140" fill="none">
+      <ellipse cx="50" cy="125" rx="28" ry="7" fill="#c4a882" opacity="0.5"/>
+      <path d="M32 118 C20 100 15 80 20 58 C23 44 32 34 50 32 C68 34 77 44 80 58 C85 80 80 100 68 118 Z"
+            fill="#c4a882" opacity="0.7"/>
+      <path d="M38 50 C38 38 62 38 62 50" stroke="#a0806a" stroke-width="2" fill="none"/>
+      <ellipse cx="50" cy="32" rx="14" ry="6" fill="#b89070" opacity="0.8"/>
+      <ellipse cx="50" cy="28" rx="9" ry="4" fill="#d4a882" opacity="0.9"/>
+    </svg>`;
+  }
+
+  function renderVases(takenIds) {
+    const grid = document.getElementById('clay-vase-grid');
+    const allGone = document.getElementById('clay-all-gone');
+    const available = VASES.filter(v => !takenIds.has(v.id));
+
+    if (available.length === 0) {
+      allGone.style.display = 'block';
+      return;
+    }
+
+    grid.innerHTML = VASES.map(vase => {
+      const taken = takenIds.has(vase.id);
+      return `
+        <div class="clay-vase-card${taken ? ' unavailable' : ''}"
+             data-vase-id="${vase.id}"
+             data-vase-name="${vase.name}"
+             onclick="selectVase(this)">
+          <div class="clay-vase-card__img-wrap">
+            <div class="clay-vase-placeholder">${vasePlaceholderSVG()}</div>
+          </div>
+          <div class="clay-vase-card__body">
+            <p class="clay-vase-card__name">${vase.name}</p>
+            <span class="clay-vase-card__status ${taken ? 'taken' : 'available'}">
+              ${taken ? 'Chosen' : 'Available'}
+            </span>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  // ─── Smooth scroll helper ───
+  function scrollToSection(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    setTimeout(function() {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 200);
+  }
+
+  // ─── Selection handlers (global so onclick attrs work) ───
+  window.selectVase = function(el) {
+    if (el.classList.contains('unavailable')) return;
+    document.querySelectorAll('.clay-vase-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedVaseId   = el.dataset.vaseId;
+    updateSummary();
+    clearError();
+    scrollToSection('clay-section-charity');
+  };
+
+  window.selectCharity = function(el) {
+    document.querySelectorAll('.clay-charity-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedCharityName      = el.dataset.charity;
+    selectedCharityProjectId = el.dataset.projectId;
+    updateSummary();
+    clearError();
+    scrollToSection('clay-section-amount');
+  };
+
+  window.selectAmount = function(el) {
+    document.querySelectorAll('.clay-amount-btn').forEach(b => b.classList.remove('selected'));
+    el.classList.add('selected');
+    const custom = document.getElementById('clay-custom-amount');
+    if (el.dataset.eur === 'custom') {
+      custom.classList.add('visible');
+      custom.focus();
+      selectedAmountEur = null;
+    } else {
+      custom.classList.remove('visible');
+      selectedAmountEur = el.dataset.eur;
+    }
+    updateSummary();
+    clearError();
+    scrollToSection('clay-section-details');
+  };
+
+  document.getElementById('clay-custom-amount').addEventListener('input', function () {
+    selectedAmountEur = this.value ? this.value : null;
+    updateSummary();
+  });
+
+  document.getElementById('clay-name').addEventListener('input', updateSummary);
+
+  function updateSummary() {
+    const name = document.getElementById('clay-name').value.trim();
+    const customVal = document.getElementById('clay-custom-amount').value;
+    const amtDisplay = selectedAmountEur
+      ? `€${selectedAmountEur}`
+      : (customVal ? `€${customVal}` : '—');
+
+    document.getElementById('sum-vase').textContent    = selectedVaseId
+      ? (VASES.find(function(v) { return v.id === selectedVaseId; }) || {}).name || '—' : '—';
+    document.getElementById('sum-charity').textContent = selectedCharityName || '—';
+    document.getElementById('sum-amount').textContent  = amtDisplay;
+    document.getElementById('sum-name').textContent    = name || '—';
+
+    const allSet = selectedVaseId && selectedCharityName && (selectedAmountEur || customVal) && name;
+    document.getElementById('clay-summary').style.display = allSet ? 'block' : 'none';
+  }
+
+  function getEffectiveAmount() {
+    if (selectedAmountEur && selectedAmountEur !== 'custom') return selectedAmountEur;
+    return document.getElementById('clay-custom-amount').value;
+  }
+
+  // ─── Submit ───
+  window.submitReservation = async function () {
+    clearError();
+    const name   = document.getElementById('clay-name').value.trim();
+    const note   = document.getElementById('clay-note').value.trim();
+    const amount = getEffectiveAmount();
+
+    if (!selectedVaseId)      return showError('Please choose a vase first.');
+    if (!selectedCharityName) return showError('Please select a charity.');
+    if (!amount)              return showError('Please choose or enter a donation amount.');
+    if (!name)                return showError('Please enter your name.');
+
+    const btn = document.getElementById('clay-submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Reserving…';
+
+    try {
+      var reserved = await rpcReserveVase({
+        p_vase_id:    selectedVaseId,
+        p_guest_name: name,
+        p_charity:    selectedCharityName,
+        p_amount:     String(amount),
+        p_note:       note
+      });
+
+      if (!reserved) {
+        markVaseTaken(selectedVaseId);
+        selectedVaseId = null;
+        updateSummary();
+        btn.disabled = false;
+        btn.textContent = 'Reserve vase & donate →';
+        return showError('Sorry, this vase has just been chosen by someone else. Please choose another one.');
+      }
+
+      sendEmailNotification({ name, vase: selectedVaseId, charity: selectedCharityName, amount, note });
+
+      const charityUrl = buildCharityUrl(selectedCharityProjectId, amount);
+
+      document.getElementById('clay-form-wrap').style.display = 'none';
+      document.getElementById('clay-confirmation').style.display = 'block';
+
+      setTimeout(() => window.open(charityUrl, '_blank'), 400);
+
+    } catch (err) {
+      console.error(err);
+      showError('Something went wrong: ' + (err && err.message ? err.message : String(err)));
+      btn.disabled = false;
+      btn.textContent = 'Reserve vase & donate →';
+    }
+  };
+
+  function buildCharityUrl(projectId, amount) {
+    const params = new URLSearchParams({
+      currency:     'EUR',
+      locale:       'en',
+      portalWidget: '1',
+      frequency:    'once',
+      amount:       String(amount),
+    });
+    return `https://www.darujme.cz/darovat/${projectId}?${params}`;
+  }
+
+  function markVaseTaken(vaseId) {
+    const card = document.querySelector(`[data-vase-id="${vaseId}"]`);
+    if (!card) return;
+    card.classList.add('unavailable');
+    card.classList.remove('selected');
+    const status = card.querySelector('.clay-vase-card__status');
+    if (status) { status.textContent = 'Chosen'; status.className = 'clay-vase-card__status taken'; }
+  }
+
+  // ─── Email notification via EmailJS ───
+  function sendEmailNotification(params) {
+    if (typeof emailjs === 'undefined') { console.warn('EmailJS not loaded yet'); return; }
+    try { emailjs.init(EMAILJS_PUBLIC_KEY); } catch(e) { /* already init'd */ }
+
+    emailjs.send(
+      EMAILJS_SERVICE_ID,
+      EMAILJS_TEMPLATE_ID,
+      {
+        guest_name:    params.name,
+        vase_selected: params.vase,
+        charity:       params.charity,
+        amount:        '€' + params.amount,
+        note:          params.note || '(none)',
+        timestamp:     new Date().toLocaleString('en-GB', { timeZone: 'Europe/Prague' }),
+        status:        'Reserved'
+      }
+    ).catch(function(e) { console.warn('EmailJS failed (non-critical):', e); });
+  }
+
+  // ─── Helpers ───
+  function showError(msg) {
+    const el = document.getElementById('clay-error');
+    el.textContent = msg;
+    el.classList.add('visible');
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function clearError() {
+    const el = document.getElementById('clay-error');
+    el.classList.remove('visible');
+  }
+
+  init();
+})();
+</script>
+
+<!-- EmailJS SDK (defer — initialised once it loads) -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+        defer
+        onload="if(typeof emailjs!=='undefined'&&window.__EJS_KEY__)emailjs.init(window.__EJS_KEY__)"></script>
+
+</body>
+</html>
