@@ -676,18 +676,19 @@
   // Expose key so the EmailJS defer onload can init as soon as the script lands
   window.__EJS_KEY__ = EMAILJS_PUBLIC_KEY;
 
-  // ─── Vase data (placeholders for now; real photos later) ───
+  // ─── Vase data (real photos in /images/vases/) ───
   const VASES = [
-    { id: 'vase-01', name: 'Vase 01' },
-    { id: 'vase-02', name: 'Vase 02' },
-    { id: 'vase-03', name: 'Vase 03' },
-    { id: 'vase-04', name: 'Vase 04' },
-    { id: 'vase-05', name: 'Vase 05' },
-    { id: 'vase-06', name: 'Vase 06' },
-    { id: 'vase-07', name: 'Vase 07' },
-    { id: 'vase-08', name: 'Vase 08' },
-    { id: 'vase-09', name: 'Vase 09' },
-    { id: 'vase-10', name: 'Vase 10' },
+    { id: 'vase-01', name: 'Vase 01', image: '/images/vases/vase-01.jpg' },
+    { id: 'vase-02', name: 'Vase 02', image: '/images/vases/vase-02.jpg' },
+    { id: 'vase-03', name: 'Vase 03', image: '/images/vases/vase-03.jpg' },
+    { id: 'vase-04', name: 'Vase 04', image: '/images/vases/vase-04.jpg' },
+    { id: 'vase-05', name: 'Vase 05', image: '/images/vases/vase-05.jpg' },
+    { id: 'vase-06', name: 'Vase 06', image: '/images/vases/vase-06.jpg' },
+    { id: 'vase-07', name: 'Vase 07', image: '/images/vases/vase-07.jpg' },
+    { id: 'vase-08', name: 'Vase 08', image: '/images/vases/vase-08.jpg' },
+    { id: 'vase-09', name: 'Vase 09', image: '/images/vases/vase-09.jpg' },
+    { id: 'vase-10', name: 'Vase 10', image: '/images/vases/vase-10.jpg' },
+    { id: 'vase-11', name: 'Vase 11', image: '/images/vases/vase-11.jpg' },
   ];
 
   // ─── State ───
@@ -742,17 +743,6 @@
   }
 
   // ─── Render vase grid ───
-  function vasePlaceholderSVG() {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 140" fill="none">
-      <ellipse cx="50" cy="125" rx="28" ry="7" fill="#c4a882" opacity="0.5"/>
-      <path d="M32 118 C20 100 15 80 20 58 C23 44 32 34 50 32 C68 34 77 44 80 58 C85 80 80 100 68 118 Z"
-            fill="#c4a882" opacity="0.7"/>
-      <path d="M38 50 C38 38 62 38 62 50" stroke="#a0806a" stroke-width="2" fill="none"/>
-      <ellipse cx="50" cy="32" rx="14" ry="6" fill="#b89070" opacity="0.8"/>
-      <ellipse cx="50" cy="28" rx="9" ry="4" fill="#d4a882" opacity="0.9"/>
-    </svg>`;
-  }
-
   function renderVases(takenIds) {
     const grid = document.getElementById('clay-vase-grid');
     const allGone = document.getElementById('clay-all-gone');
@@ -771,7 +761,7 @@
              data-vase-name="${vase.name}"
              onclick="selectVase(this)">
           <div class="clay-vase-card__img-wrap">
-            <div class="clay-vase-placeholder">${vasePlaceholderSVG()}</div>
+            <img src="${vase.image}" alt="${vase.name}" loading="lazy" />
           </div>
           <div class="clay-vase-card__body">
             <p class="clay-vase-card__name">${vase.name}</p>
