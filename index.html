@@ -532,78 +532,48 @@
           <h2 class="clay-step__title" data-i18n="step2_title">Choose a charity</h2>
         </div>
         <div class="clay-charity-list" id="clay-charity-list">
-
-          <!-- Ronald McDonald — heart card -->
-          <div class="clay-charity-card"
-               data-charity="Ronald McDonald House Charities Czech Republic"
-               data-project-id="1210088"
-               onclick="selectCharity(this)">
+          <div class="clay-charity-card" data-charity="Ronald McDonald House Charities Czech Republic" data-project-id="1210088" onclick="selectCharity(this)">
             <p class="clay-charity-card__name">
               <span data-i18n="charity1_name">Ronald McDonald House Charities</span>
               <span class="clay-charity-heart-tag" data-i18n="charity_heart_tag">Close to our hearts</span>
             </p>
             <p class="clay-charity-card__desc" data-i18n="charity1_desc">
-              Ronald McDonald House Charities has been an incredibly important part of Anto's life
-              and family. During Alessandro's medical care in France and the United States, the
-              foundation helped support the family through some of the hardest moments of their lives.
-              Being able to stay close to loved ones during treatment changes everything.
+              Ronald McDonald House Charities has been an incredibly important part of Anto's life and family. During Alessandro's medical care in France and the United States, the foundation helped support the family through some of the hardest moments of their lives. Being able to stay close to loved ones during treatment changes everything.
             </p>
           </div>
 
-          <!-- Cibulka Centre -->
-          <div class="clay-charity-card"
-               data-charity="Cibulka Centre"
-               data-project-id="1207495"
-               onclick="selectCharity(this)">
+          <div class="clay-charity-card" data-charity="Cibulka Centre" data-project-id="1207495" onclick="selectCharity(this)">
             <p class="clay-charity-card__name" data-i18n="charity2_name">Cibulka Centre</p>
             <p class="clay-charity-card__desc" data-i18n="charity2_desc">
-              A future care centre in Prague for seriously ill children and their families,
-              offering respite care, short-term stays, and end-of-life support.
+              A future care centre in Prague for seriously ill children and their families, offering respite care, short-term stays, and end-of-life support.
             </p>
           </div>
 
-          <!-- SOS Gaza (People in Need) -->
-          <div class="clay-charity-card"
-               data-charity="SOS Gaza"
-               data-project-id="1206964"
-               onclick="selectCharity(this)">
+          <div class="clay-charity-card" data-charity="SOS Gaza" data-project-id="1206964" onclick="selectCharity(this)">
             <p class="clay-charity-card__name" data-i18n="charity3_name">SOS Gaza</p>
             <p class="clay-charity-card__desc" data-i18n="charity3_desc">
-              Emergency humanitarian aid for civilians in Gaza — food, drinking water, medical care,
-              and shelter for families enduring the ongoing crisis. Run by People in Need.
+              Emergency humanitarian aid for civilians in Gaza — food, drinking water, medical care, and shelter for families enduring the ongoing crisis. Run by People in Need.
             </p>
           </div>
 
-          <!-- Psychological Help for Ukrainian Children -->
-          <div class="clay-charity-card"
-               data-charity="Psychological Help for Ukrainian Children"
-               data-project-id="1208551"
-               onclick="selectCharity(this)">
+          <div class="clay-charity-card" data-charity="Psychological Help for Ukrainian Children" data-project-id="1208551" onclick="selectCharity(this)">
             <p class="clay-charity-card__name" data-i18n="charity4_name">Psychological Help for Ukrainian Children</p>
             <p class="clay-charity-card__desc" data-i18n="charity4_desc">
-              Support for psychological care for Ukrainian children affected by war, including
-              children living in the Czech Republic and those returning after illegal detention.
+              Support for psychological care for Ukrainian children affected by war, including children living in the Czech Republic and those returning after illegal detention.
             </p>
           </div>
 
-          <!-- Pride Community Center -->
-          <div class="clay-charity-card"
-               data-charity="Pride Community Center"
-               data-project-id="1207562"
-               onclick="selectCharity(this)">
+          <div class="clay-charity-card" data-charity="Pride Community Center" data-project-id="1207562" onclick="selectCharity(this)">
             <p class="clay-charity-card__name" data-i18n="charity5_name">Pride Community Center</p>
             <p class="clay-charity-card__desc" data-i18n="charity5_desc">
-              A safe space in Prague offering counselling, community programmes, and everyday
-              support for LGBT+ people, their families and friends — a place to belong.
+              A safe space in Prague offering counselling, community programmes, and everyday support for LGBT+ people, their families and friends — a place to belong.
             </p>
           </div>
-
         </div>
       </div>
 
       <div class="clay-divider"></div>
 
-      <!-- Step 3: Donation amount -->
       <div class="clay-step" id="clay-section-amount">
         <div class="clay-step__header">
           <div class="clay-step__num">3</div>
@@ -627,13 +597,11 @@
             <span class="clay-amount-btn__czk" data-i18n="amount_custom_helper">your choice</span>
           </button>
         </div>
-        <input id="clay-custom-amount" class="clay-amount-custom"
-               type="number" min="25" data-i18n-placeholder="custom_placeholder" placeholder="Enter amount in € (min 25)" />
+        <input id="clay-custom-amount" class="clay-amount-custom" type="number" min="25" data-i18n-placeholder="custom_placeholder" placeholder="Enter amount in € (min 25)" />
       </div>
 
       <div class="clay-divider"></div>
 
-      <!-- Step 4: Your details -->
       <div class="clay-step" id="clay-section-details">
         <div class="clay-step__header">
           <div class="clay-step__num">4</div>
@@ -651,47 +619,29 @@
 
       <div class="clay-divider"></div>
 
-      <!-- Step 5: Confirm & submit -->
       <div class="clay-step" id="clay-submit-step">
         <div class="clay-step__header">
           <div class="clay-step__num">5</div>
           <h2 class="clay-step__title" data-i18n="step5_title">Reserve &amp; donate</h2>
         </div>
 
-        <!-- Summary -->
         <div class="clay-summary" id="clay-summary" style="display:none">
-          <div class="clay-summary__row">
-            <span class="clay-summary__label" data-i18n="sum_vase">Vase</span>
-            <span class="clay-summary__value" id="sum-vase">—</span>
-          </div>
-          <div class="clay-summary__row">
-            <span class="clay-summary__label" data-i18n="sum_charity">Charity</span>
-            <span class="clay-summary__value" id="sum-charity">—</span>
-          </div>
-          <div class="clay-summary__row">
-            <span class="clay-summary__label" data-i18n="sum_amount">Amount</span>
-            <span class="clay-summary__value" id="sum-amount">—</span>
-          </div>
-          <div class="clay-summary__row">
-            <span class="clay-summary__label" data-i18n="sum_name">Name</span>
-            <span class="clay-summary__value" id="sum-name">—</span>
-          </div>
+          <div class="clay-summary__row"><span class="clay-summary__label" data-i18n="sum_vase">Vase</span><span class="clay-summary__value" id="sum-vase">—</span></div>
+          <div class="clay-summary__row"><span class="clay-summary__label" data-i18n="sum_charity">Charity</span><span class="clay-summary__value" id="sum-charity">—</span></div>
+          <div class="clay-summary__row"><span class="clay-summary__label" data-i18n="sum_amount">Amount</span><span class="clay-summary__value" id="sum-amount">—</span></div>
+          <div class="clay-summary__row"><span class="clay-summary__label" data-i18n="sum_name">Name</span><span class="clay-summary__value" id="sum-name">—</span></div>
         </div>
 
         <div id="clay-error" class="clay-alert"></div>
 
-        <button id="clay-submit-btn" class="clay-btn-primary" data-i18n="submit_btn" onclick="submitReservation()">
-          Reserve vase &amp; donate →
-        </button>
+        <button id="clay-submit-btn" class="clay-btn-primary" data-i18n="submit_btn" onclick="submitReservation()">Reserve vase &amp; donate →</button>
         <p data-i18n="submit_note" style="font-size:0.78rem; color:var(--clay-muted); text-align:center; margin-top:0.75rem; line-height:1.6;">
           Clicking this button will reserve your vase and open the charity's donation page in a new tab.
         </p>
       </div>
+    </div>
+  </div>
 
-    </div><!-- /clay-form-content -->
-  </div><!-- /clay-form-wrap -->
-
-  <!-- ── Confirmation ── -->
   <div id="clay-confirmation">
     <div class="clay-confirm__heart">🤍</div>
     <h2 class="clay-confirm__title" data-i18n="confirm_title">Thank you</h2>
@@ -699,23 +649,20 @@
       Your vase is reserved! We'll make sure<br>it finds you at breakfast — or the next<br>time we meet in Prague. 🤍
     </p>
   </div>
-
-</div><!-- /clay-app -->
+</div>
 
 <script>
-// ─── Translations ───
-// Czech strings — Anto, please ask Josef for a once-over.
 const I18N = {
   en: {
     hero_intro_1: "The vases on the table were handmade by Anto for our wedding, with one simple purpose: turning a small object of love into support for causes we deeply care about.",
     hero_intro_2: "Choose a vase, select a charity, make a donation, and we'll make sure your vase finds its way home with you in the morning.",
-    hero_note:    "Each vase is worth around €25 — our suggested minimum donation.",
+    hero_note: "Each vase is worth around €25 — our suggested minimum donation.",
     loading_vases: "Loading vases…",
-    step1_title:  "Choose your vase",
-    all_gone:     "All vases have been claimed — thank you for the love! 🤍",
+    step1_title: "Choose your vase",
+    all_gone: "All vases have been claimed — thank you for the love! 🤍",
     status_available: "Available",
-    status_chosen:    "Chosen",
-    step2_title:  "Choose a charity",
+    status_chosen: "Chosen",
+    step2_title: "Choose a charity",
     charity_heart_tag: "Close to our hearts",
     charity1_name: "Ronald McDonald House Charities",
     charity1_desc: "Ronald McDonald House Charities has been an incredibly important part of Anto's life and family. During Alessandro's medical care in France and the United States, the foundation helped support the family through some of the hardest moments of their lives. Being able to stay close to loved ones during treatment changes everything.",
@@ -727,39 +674,39 @@ const I18N = {
     charity4_desc: "Support for psychological care for Ukrainian children affected by war, including children living in the Czech Republic and those returning after illegal detention.",
     charity5_name: "Pride Community Center",
     charity5_desc: "A safe space in Prague offering counselling, community programmes, and everyday support for LGBT+ people, their families and friends — a place to belong.",
-    step3_title:  "Donation amount",
+    step3_title: "Donation amount",
     amount_custom: "Custom",
     amount_custom_helper: "your choice",
     custom_placeholder: "Enter amount in € (min 25)",
-    step4_title:  "Your details",
-    name_label:   "Your name *",
+    step4_title: "Your details",
+    name_label: "Your name *",
     name_placeholder: "How shall we label the vase?",
-    note_label:   "A note for us (optional)",
+    note_label: "A note for us (optional)",
     note_placeholder: "A message, a wish, anything you'd like…",
-    step5_title:  "Reserve & donate",
+    step5_title: "Reserve & donate",
     sum_vase: "Vase", sum_charity: "Charity", sum_amount: "Amount", sum_name: "Name",
     submit_btn: "Reserve vase & donate →",
     submit_btn_reserving: "Reserving…",
     submit_note: "Clicking this button will reserve your vase and open the charity's donation page in a new tab.",
     confirm_title: "Thank you",
-    confirm_body:  "Your vase is reserved! We'll make sure<br>it finds you at breakfast — or the next<br>time we meet in Prague. 🤍",
-    err_no_vase:    "Please choose a vase first.",
+    confirm_body: "Your vase is reserved! We'll make sure<br>it finds you at breakfast — or the next<br>time we meet in Prague. 🤍",
+    err_no_vase: "Please choose a vase first.",
     err_no_charity: "Please select a charity.",
-    err_no_amount:  "Please choose or enter a donation amount.",
-    err_no_name:    "Please enter your name.",
-    err_taken:      "Sorry, this vase has just been chosen by someone else. Please choose another one.",
-    err_generic:    "Something went wrong: ",
+    err_no_amount: "Please choose or enter a donation amount.",
+    err_no_name: "Please enter your name.",
+    err_taken: "Sorry, this vase has just been chosen by someone else. Please choose another one.",
+    err_generic: "Something went wrong: "
   },
   it: {
     hero_intro_1: "I vasi sul tavolo sono stati fatti a mano da Anto per il nostro matrimonio, con uno scopo semplice: trasformare un piccolo oggetto d'amore in sostegno per cause a cui teniamo profondamente.",
     hero_intro_2: "Scegli un vaso, scegli un'associazione, fai una donazione, e ci assicureremo che il tuo vaso torni a casa con te al mattino.",
-    hero_note:    "Ogni vaso vale circa €25 — la nostra donazione minima consigliata.",
+    hero_note: "Ogni vaso vale circa €25 — la nostra donazione minima consigliata.",
     loading_vases: "Caricamento vasi…",
-    step1_title:  "Scegli il tuo vaso",
-    all_gone:     "Tutti i vasi sono stati scelti — grazie per l'amore! 🤍",
+    step1_title: "Scegli il tuo vaso",
+    all_gone: "Tutti i vasi sono stati scelti — grazie per l'amore! 🤍",
     status_available: "Disponibile",
-    status_chosen:    "Scelto",
-    step2_title:  "Scegli un'associazione",
+    status_chosen: "Scelto",
+    step2_title: "Scegli un'associazione",
     charity_heart_tag: "Vicinissima ai nostri cuori",
     charity1_name: "Ronald McDonald House Charities",
     charity1_desc: "Ronald McDonald House Charities è stata una parte incredibilmente importante della vita e della famiglia di Anto. Durante le cure mediche di Alessandro in Francia e negli Stati Uniti, la fondazione ha aiutato la famiglia in alcuni dei momenti più difficili della loro vita. Poter restare vicini ai propri cari durante le cure cambia tutto.",
@@ -771,42 +718,42 @@ const I18N = {
     charity4_desc: "Sostegno per la cura psicologica dei bambini ucraini colpiti dalla guerra, inclusi quelli che vivono in Repubblica Ceca e quelli che tornano dopo una detenzione illegale.",
     charity5_name: "Pride Community Center",
     charity5_desc: "Uno spazio sicuro a Praga che offre consulenza, programmi comunitari e supporto quotidiano per persone LGBT+, le loro famiglie e amici — un posto a cui appartenere.",
-    step3_title:  "Importo della donazione",
+    step3_title: "Importo della donazione",
     amount_custom: "Altro",
     amount_custom_helper: "a tua scelta",
     custom_placeholder: "Inserisci l'importo in € (min 25)",
-    step4_title:  "I tuoi dati",
-    name_label:   "Il tuo nome *",
+    step4_title: "I tuoi dati",
+    name_label: "Il tuo nome *",
     name_placeholder: "Come dovremo etichettare il vaso?",
-    note_label:   "Un messaggio per noi (opzionale)",
+    note_label: "Un messaggio per noi (opzionale)",
     note_placeholder: "Un messaggio, un augurio, qualsiasi cosa tu voglia…",
-    step5_title:  "Prenota e dona",
+    step5_title: "Prenota e dona",
     sum_vase: "Vaso", sum_charity: "Associazione", sum_amount: "Importo", sum_name: "Nome",
     submit_btn: "Prenota il vaso e dona →",
     submit_btn_reserving: "Prenotazione in corso…",
     submit_note: "Cliccando questo pulsante prenoterai il tuo vaso e aprirai la pagina di donazione in una nuova scheda.",
     confirm_title: "Grazie",
-    confirm_body:  "Il tuo vaso è prenotato! Ci assicureremo<br>che ti raggiunga a colazione — o la prossima<br>volta che ci vediamo a Praga. 🤍",
-    err_no_vase:    "Per favore scegli prima un vaso.",
+    confirm_body: "Il tuo vaso è prenotato! Ci assicureremo<br>che ti raggiunga a colazione — o la prossima<br>volta che ci vediamo a Praga. 🤍",
+    err_no_vase: "Per favore scegli prima un vaso.",
     err_no_charity: "Per favore seleziona un'associazione.",
-    err_no_amount:  "Per favore scegli o inserisci un importo.",
-    err_no_name:    "Per favore inserisci il tuo nome.",
-    err_taken:      "Spiacenti, questo vaso è appena stato scelto da qualcun altro. Scegline un altro per favore.",
-    err_generic:    "Qualcosa è andato storto: ",
+    err_no_amount: "Per favore scegli o inserisci un importo.",
+    err_no_name: "Per favore inserisci il tuo nome.",
+    err_taken: "Spiacenti, questo vaso è appena stato scelto da qualcun altro. Scegline un altro per favore.",
+    err_generic: "Qualcosa è andato storto: "
   },
   cs: {
     hero_intro_1: "Vázy na stole vyrobil Anto ručně pro naši svatbu s jednoduchým záměrem: proměnit malý předmět lásky v podporu věcí, na kterých nám hluboce záleží.",
     hero_intro_2: "Vyber si vázu, vyber charitu, daruj, a my se postaráme, aby tě tvá váza ráno doprovodila domů.",
-    hero_note:    "Každá váza má hodnotu zhruba €25 — náš doporučený minimální dar.",
+    hero_note: "Každá váza má hodnotu zhruba €25 — náš doporučený minimální dar.",
     loading_vases: "Načítání váz…",
-    step1_title:  "Vyber si vázu",
-    all_gone:     "Všechny vázy už byly vybrány — díky za lásku! 🤍",
+    step1_title: "Vyber si vázu",
+    all_gone: "Všechny vázy už byly vybrány — díky za lásku! 🤍",
     status_available: "Volná",
-    status_chosen:    "Vybraná",
-    step2_title:  "Vyber charitu",
+    status_chosen: "Vybraná",
+    step2_title: "Vyber charitu",
     charity_heart_tag: "Blízko našim srdcím",
     charity1_name: "Ronald McDonald House Charities",
-    charity1_desc: "Ronald McDonald House Charities byla neuvěřitelně důležitou součástí Antova života a jeho rodiny. Během Alessandrovy léčby ve Francii a ve Spojených státech nadace pomáhala rodině v některých z nejtěžších okamžiků jejich života. Možnost zůstat blízko svým blízkým během léčby mění vše.",
+    charity1_desc: "Ronald McDonald House Charities byla neuvěřitelně důležitou součástí Antova života a jeho rodiny. Během Alessandrovy léčby ve Francii a ve Spojených státech nadace rodinu podpořila v některých z nejtěžších okamžiků jejich života. Mít možnost zůstat blízko svým blízkým během léčby mění všechno.",
     charity2_name: "Cibulka Centre",
     charity2_desc: "Budoucí pečovatelské centrum v Praze pro vážně nemocné děti a jejich rodiny, nabízející odlehčovací péči, krátkodobé pobyty a podporu v závěru života.",
     charity3_name: "SOS Gaza",
@@ -815,68 +762,55 @@ const I18N = {
     charity4_desc: "Podpora psychologické péče o ukrajinské děti zasažené válkou, včetně dětí žijících v České republice a těch, které se vracejí po nezákonném zadržení.",
     charity5_name: "Pride Community Center",
     charity5_desc: "Bezpečný prostor v Praze s poradenstvím, komunitními programy a každodenní podporou pro LGBT+ lidi, jejich rodiny a přátele — místo, kam patřit.",
-    step3_title:  "Výše daru",
+    step3_title: "Výše daru",
     amount_custom: "Vlastní",
     amount_custom_helper: "tvoje volba",
     custom_placeholder: "Zadej částku v € (min 25)",
-    step4_title:  "Tvoje údaje",
-    name_label:   "Tvoje jméno *",
+    step4_title: "Tvoje údaje",
+    name_label: "Tvoje jméno *",
     name_placeholder: "Jak máme vázu označit?",
-    note_label:   "Zpráva pro nás (volitelné)",
+    note_label: "Zpráva pro nás (volitelné)",
     note_placeholder: "Zpráva, přání, cokoli chceš…",
-    step5_title:  "Rezervovat a darovat",
+    step5_title: "Rezervovat a darovat",
     sum_vase: "Váza", sum_charity: "Charita", sum_amount: "Částka", sum_name: "Jméno",
     submit_btn: "Rezervovat vázu a darovat →",
     submit_btn_reserving: "Rezervuji…",
     submit_note: "Kliknutím tlačítka rezervuješ vázu a otevřeš stránku daru v nové záložce.",
     confirm_title: "Děkujeme",
-    confirm_body:  "Tvá váza je rezervovaná! Postaráme se,<br>aby k tobě dorazila u snídaně —<br>nebo až se příště uvidíme v Praze. 🤍",
-    err_no_vase:    "Vyber si prosím nejdříve vázu.",
+    confirm_body: "Tvá váza je rezervovaná! Postaráme se,<br>aby k tobě dorazila u snídaně —<br>nebo až se příště uvidíme v Praze. 🤍",
+    err_no_vase: "Vyber si prosím nejdříve vázu.",
     err_no_charity: "Vyber prosím charitu.",
-    err_no_amount:  "Vyber nebo zadej částku daru.",
-    err_no_name:    "Zadej prosím své jméno.",
-    err_taken:      "Promiň, tuto vázu si právě vybral někdo jiný. Vyber prosím jinou.",
-    err_generic:    "Něco se pokazilo: ",
-  },
+    err_no_amount: "Vyber nebo zadej částku daru.",
+    err_no_name: "Zadej prosím své jméno.",
+    err_taken: "Promiň, tuto vázu si právě vybral někdo jiný. Vyber prosím jinou.",
+    err_generic: "Něco se pokazilo: "
+  }
 };
 
 let CURRENT_LANG = 'en';
-
-function t(key) {
-  return (I18N[CURRENT_LANG] && I18N[CURRENT_LANG][key]) || I18N.en[key] || key;
-}
-
+function t(key) { return (I18N[CURRENT_LANG] && I18N[CURRENT_LANG][key]) || I18N.en[key] || key; }
 function setLanguage(lang) {
   if (!I18N[lang]) lang = 'en';
   CURRENT_LANG = lang;
   try { localStorage.setItem('clay_lang', lang); } catch(e) {}
   document.documentElement.lang = lang;
-
-  // Text content
   document.querySelectorAll('[data-i18n]').forEach(function(el) {
     var v = I18N[lang][el.dataset.i18n];
     if (v !== undefined) el.textContent = v;
   });
-  // HTML content (used when the string contains <br> etc.)
   document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
     var v = I18N[lang][el.dataset.i18nHtml];
     if (v !== undefined) el.innerHTML = v;
   });
-  // Placeholders
   document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
     var v = I18N[lang][el.dataset.i18nPlaceholder];
     if (v !== undefined) el.placeholder = v;
   });
-
-  // Switcher state
   document.querySelectorAll('.clay-lang-btn').forEach(function(b) {
     b.classList.toggle('active', b.dataset.lang === lang);
   });
-
-  // Re-render dynamic bits that aren't in the DOM as data-i18n
   if (typeof window.__claySyncDynamic === 'function') window.__claySyncDynamic();
 }
-
 (function initLanguage() {
   var stored = null;
   try { stored = localStorage.getItem('clay_lang'); } catch(e) {}
@@ -886,17 +820,13 @@ function setLanguage(lang) {
 })();
 
 (function () {
-  // ─── Config (Supabase + EmailJS — same shared backend as the wedding site) ───
-  const SUPABASE_URL      = 'https://moptegvrlzemfurcciaa.supabase.co';
+  const SUPABASE_URL = 'https://moptegvrlzemfurcciaa.supabase.co';
   const SUPABASE_ANON_KEY = '...';
-
-  const EMAILJS_PUBLIC_KEY  = '-lUyo3xHRYR3j3bCa';
-  const EMAILJS_SERVICE_ID  = 'service_0hq8apf';
+  const EMAILJS_PUBLIC_KEY = '-lUyo3xHRYR3j3bCa';
+  const EMAILJS_SERVICE_ID = 'service_0hq8apf';
   const EMAILJS_TEMPLATE_ID = 'template_qftkksj';
-  // Expose key so the EmailJS defer onload can init as soon as the script lands
   window.__EJS_KEY__ = EMAILJS_PUBLIC_KEY;
 
-  // Track EmailJS loading/init so we never throw noisy script-load errors
   let emailJsReady = false;
   function markEmailJsReadyIfPossible() {
     if (typeof emailjs === 'undefined') return false;
@@ -905,7 +835,6 @@ function setLanguage(lang) {
       emailJsReady = true;
       return true;
     } catch (e) {
-      // In case of repeated init or older signature, fallback once.
       try {
         emailjs.init(EMAILJS_PUBLIC_KEY);
         emailJsReady = true;
@@ -916,7 +845,6 @@ function setLanguage(lang) {
     }
   }
 
-  // ─── Vase data (real photos in /images/vases/) ───
   const VASES = [
     { id: 'vase-01', name: 'Vase 01', image: 'images/vases/vase-01.jpg' },
     { id: 'vase-02', name: 'Vase 02', image: 'images/vases/vase-02.jpg' },
@@ -928,17 +856,15 @@ function setLanguage(lang) {
     { id: 'vase-08', name: 'Vase 08', image: 'images/vases/vase-08.jpg' },
     { id: 'vase-09', name: 'Vase 09', image: 'images/vases/vase-09.jpg' },
     { id: 'vase-10', name: 'Vase 10', image: 'images/vases/vase-10.jpg' },
-    { id: 'vase-11', name: 'Vase 11', image: 'images/vases/vase-11.jpg' },
+    { id: 'vase-11', name: 'Vase 11', image: 'images/vases/vase-11.jpg' }
   ];
 
-  // ─── State ───
   let selectedVaseId = null;
   let selectedCharityName = null;
   let selectedCharityProjectId = null;
   let selectedAmountEur = null;
   let reservedVaseIds = new Set();
 
-  // ─── Supabase REST helpers (no SDK) ───
   var SB_HEADERS = {
     'apikey': SUPABASE_ANON_KEY,
     'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
@@ -968,7 +894,6 @@ function setLanguage(lang) {
     return await resp.json();
   }
 
-  // ─── Init ───
   async function init() {
     try {
       reservedVaseIds = await fetchReservedVaseIds();
@@ -976,38 +901,212 @@ function setLanguage(lang) {
       console.warn('Could not load vase availability:', e.message);
       reservedVaseIds = new Set();
     }
-
     renderVases(reservedVaseIds);
     document.getElementById('clay-loading').style.display = 'none';
     document.getElementById('clay-form-content').style.display = 'block';
   }
 
-  // ... unchanged code omitted for brevity in this commit body ...
+  function renderVases(takenIds) {
+    const grid = document.getElementById('clay-vase-grid');
+    const allGone = document.getElementById('clay-all-gone');
+    const available = VASES.filter(v => !takenIds.has(v.id));
+    if (available.length === 0) {
+      allGone.style.display = 'block';
+      grid.innerHTML = '';
+      return;
+    }
+    allGone.style.display = 'none';
+    grid.innerHTML = VASES.map(function(vase) {
+      const taken = takenIds.has(vase.id);
+      return `
+        <div class="clay-vase-card${taken ? ' unavailable' : ''}" data-vase-id="${vase.id}" data-vase-name="${vase.name}" onclick="selectVase(this)">
+          <div class="clay-vase-card__img-wrap">
+            <img src="${vase.image}" alt="${vase.name}" loading="lazy" />
+          </div>
+          <div class="clay-vase-card__body">
+            <p class="clay-vase-card__name">${vase.name}</p>
+            <span class="clay-vase-card__status ${taken ? 'taken' : 'available'}">${taken ? t('status_chosen') : t('status_available')}</span>
+          </div>
+        </div>`;
+    }).join('');
+  }
 
-  // ─── Email notification via EmailJS ───
+  window.__claySyncDynamic = function() {
+    if (reservedVaseIds && document.getElementById('clay-vase-grid')) renderVases(reservedVaseIds);
+    var btn = document.getElementById('clay-submit-btn');
+    if (btn && !btn.disabled) btn.textContent = t('submit_btn');
+    updateSummary();
+  };
+
+  function scrollToSection(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    setTimeout(function() { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 200);
+  }
+
+  window.selectVase = function(el) {
+    if (el.classList.contains('unavailable')) return;
+    document.querySelectorAll('.clay-vase-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedVaseId = el.dataset.vaseId;
+    updateSummary();
+    clearError();
+    scrollToSection('clay-section-charity');
+  };
+
+  window.selectCharity = function(el) {
+    document.querySelectorAll('.clay-charity-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedCharityName = el.dataset.charity;
+    selectedCharityProjectId = el.dataset.projectId;
+    updateSummary();
+    clearError();
+    scrollToSection('clay-section-amount');
+  };
+
+  window.selectAmount = function(el) {
+    document.querySelectorAll('.clay-amount-btn').forEach(b => b.classList.remove('selected'));
+    el.classList.add('selected');
+    const custom = document.getElementById('clay-custom-amount');
+    if (el.dataset.eur === 'custom') {
+      custom.classList.add('visible');
+      custom.focus();
+      selectedAmountEur = null;
+    } else {
+      custom.classList.remove('visible');
+      selectedAmountEur = el.dataset.eur;
+    }
+    updateSummary();
+    clearError();
+    scrollToSection('clay-section-details');
+  };
+
+  document.getElementById('clay-custom-amount').addEventListener('input', function () {
+    selectedAmountEur = this.value ? this.value : null;
+    updateSummary();
+  });
+  document.getElementById('clay-name').addEventListener('input', updateSummary);
+
+  function updateSummary() {
+    const name = document.getElementById('clay-name').value.trim();
+    const customVal = document.getElementById('clay-custom-amount').value;
+    const amtDisplay = selectedAmountEur ? `€${selectedAmountEur}` : (customVal ? `€${customVal}` : '—');
+    document.getElementById('sum-vase').textContent = selectedVaseId ? ((VASES.find(v => v.id === selectedVaseId) || {}).name || '—') : '—';
+    document.getElementById('sum-charity').textContent = selectedCharityName || '—';
+    document.getElementById('sum-amount').textContent = amtDisplay;
+    document.getElementById('sum-name').textContent = name || '—';
+    const allSet = selectedVaseId && selectedCharityName && (selectedAmountEur || customVal) && name;
+    document.getElementById('clay-summary').style.display = allSet ? 'block' : 'none';
+  }
+
+  function getEffectiveAmount() {
+    if (selectedAmountEur && selectedAmountEur !== 'custom') return selectedAmountEur;
+    return document.getElementById('clay-custom-amount').value;
+  }
+
+  window.submitReservation = async function () {
+    clearError();
+    const name = document.getElementById('clay-name').value.trim();
+    const note = document.getElementById('clay-note').value.trim();
+    const amount = getEffectiveAmount();
+    if (!selectedVaseId) return showError(t('err_no_vase'));
+    if (!selectedCharityName) return showError(t('err_no_charity'));
+    if (!amount) return showError(t('err_no_amount'));
+    if (!name) return showError(t('err_no_name'));
+
+    const btn = document.getElementById('clay-submit-btn');
+    btn.disabled = true;
+    btn.textContent = t('submit_btn_reserving');
+
+    try {
+      var reserved = await rpcReserveVase({
+        p_vase_id: selectedVaseId,
+        p_guest_name: name,
+        p_charity: selectedCharityName,
+        p_amount: String(amount),
+        p_note: note
+      });
+
+      if (!reserved) {
+        markVaseTaken(selectedVaseId);
+        selectedVaseId = null;
+        updateSummary();
+        btn.disabled = false;
+        btn.textContent = t('submit_btn');
+        return showError(t('err_taken'));
+      }
+
+      sendEmailNotification({ name, vase: selectedVaseId, charity: selectedCharityName, amount, note });
+      const charityUrl = buildCharityUrl(selectedCharityProjectId, amount);
+      document.getElementById('clay-form-wrap').style.display = 'none';
+      document.getElementById('clay-confirmation').style.display = 'block';
+      setTimeout(() => window.open(charityUrl, '_blank'), 400);
+    } catch (err) {
+      console.error(err);
+      showError(t('err_generic') + (err && err.message ? err.message : String(err)));
+      btn.disabled = false;
+      btn.textContent = t('submit_btn');
+    }
+  };
+
+  function buildCharityUrl(projectId, amount) {
+    var darujmeLocale = (CURRENT_LANG === 'cs') ? 'cs' : 'en';
+    const params = new URLSearchParams({
+      currency: 'EUR',
+      locale: darujmeLocale,
+      portalWidget: '1',
+      frequency: 'once',
+      amount: String(amount)
+    });
+    return `https://www.darujme.cz/darovat/${projectId}?${params}`;
+  }
+
+  function markVaseTaken(vaseId) {
+    const card = document.querySelector(`[data-vase-id="${vaseId}"]`);
+    if (!card) return;
+    card.classList.add('unavailable');
+    card.classList.remove('selected');
+    const status = card.querySelector('.clay-vase-card__status');
+    if (status) {
+      status.textContent = t('status_chosen');
+      status.className = 'clay-vase-card__status taken';
+    }
+  }
+
   function sendEmailNotification(params) {
     if (!emailJsReady && !markEmailJsReadyIfPossible()) {
       console.warn('EmailJS not ready; skipping non-critical notification.');
       return;
     }
-
-    return emailjs.send(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_TEMPLATE_ID,
-      {
-        guest_name:    params.name,
-        vase_selected: params.vase,
-        charity:       params.charity,
-        amount:        params.amount,
-        note:          params.note || '—'
-      }
-    ).catch(function(err) {
-      console.warn('EmailJS failed:', err);
+    return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      guest_name: params.name,
+      vase_selected: params.vase,
+      charity: params.charity,
+      amount: params.amount,
+      note: params.note || '—',
+      timestamp: new Date().toLocaleString('en-GB', { timeZone: 'Europe/Prague' }),
+      status: 'Reserved'
+    }).catch(function(e) {
+      console.warn('EmailJS failed (non-critical):', e);
     });
   }
 
-  // The rest of the page logic remains unchanged below this point in the source file.
+  function showError(msg) {
+    const el = document.getElementById('clay-error');
+    el.textContent = msg;
+    el.classList.add('visible');
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function clearError() {
+    document.getElementById('clay-error').classList.remove('visible');
+  }
+
+  init();
 })();
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer onload="if(typeof emailjs!=='undefined'&&window.__EJS_KEY__){try{emailjs.init({publicKey:window.__EJS_KEY__});}catch(e){try{emailjs.init(window.__EJS_KEY__);}catch(_){}}}"></script>
+
 </body>
 </html>
